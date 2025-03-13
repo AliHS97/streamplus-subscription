@@ -34,11 +34,13 @@ class User
     #[Assert\Choice(choices: ['Free', 'Premium'], message: 'Choose a valid subscription type')]
     private ?string $subscriptionType = 'Free';
 
-    #[ORM\OneToOne(mappedBy: 'user', targetEntity: Address::class, cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(targetEntity: Address::class, mappedBy: 'user', cascade: ['persist', 'remove'])]
     private ?Address $address = null;
 
+    #[ORM\OneToOne(targetEntity: Payment::class, mappedBy: "user", cascade: ["persist", "remove"])]
+    private ?Payment $payment = null;
 
-    // Getters and Setters
+
     public function getId(): ?int
     {
         return $this->id;
@@ -91,5 +93,10 @@ class User
     public function getAddress(): ?Address
     {
         return $this->address;
+    }
+
+    public function getPayment(): ?Payment
+    {
+        return $this->payment;
     }
 }

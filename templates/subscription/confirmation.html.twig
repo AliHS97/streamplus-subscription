@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h2>Subscription Confirmation</h2>
+
+    <h3>User Information</h3>
+    <p><strong>Name:</strong> {{ user.name }}</p>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+
+    <h3>Address</h3>
+    <p><strong>Line 1:</strong> {{ user.address.addressLine1 }}</p>
+    <p><strong>City:</strong> {{ user.address.city }}</p>
+    <p><strong>Country:</strong> {{ user.address.country }}</p>
+
+    {% if user.subscriptionType == 'Premium' %}
+        <h3>Payment Information</h3>
+        <p><strong>Card Ending:</strong> **** **** **** {{ user.payment.cardNumber[-4:] }}</p>
+        <p><strong>Expires:</strong> {{ user.payment.expirationDate }}</p>
+    {% endif %}
+
+    <!-- Button Container -->
+    <div class="d-flex justify-content-between mt-4">
+        <a href="{{ path('home', { 'success': 'true' }) }}" class="btn btn-success">Confirm & Finish</a>
+        <a href="{{ path('subscription-payment-information') }}" class="btn btn-secondary">Back</a>
+    </div>
+{% endblock %}

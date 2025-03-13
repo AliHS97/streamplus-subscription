@@ -4,6 +4,11 @@
 
 {% block body %}
 <div class="card shadow-lg p-4">
+    {% if app.request.query.get('success') == 'true' %}
+        <div class="alert alert-success">
+            Subscribed successfully!
+        </div>
+    {% endif %}
     <h2 class="mb-4">Step 1: User Information</h2>
 
     {{ form_start(form, {'attr': {'class': 'needs-validation', 'novalidate': 'novalidate'}}) }}
