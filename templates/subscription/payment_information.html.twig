@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Payment Information{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <h2>Step 3: Payment Information</h2>
+    <form method="post">
+        {{ form_start(form) }}
+        <div class="mb-3">
+            {{ form_label(form.cardNumber, 'Card Number', {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(form.cardNumber, {'attr': {'class': 'form-control', 'placeholder': 'Enter card number'}}) }}
+            {{ form_errors(form.cardNumber) }}
+        </div>
+
+        <div class="mb-3">
+            {{ form_label(form.expirationDate, 'Expiration Date (MM/YY)', {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(form.expirationDate, {'attr': {'class': 'form-control', 'placeholder': 'MM/YY'}}) }}
+            {{ form_errors(form.expirationDate) }}
+        </div>
+
+        <div class="mb-3">
+            {{ form_label(form.cvv, 'CVV', {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(form.cvv, {'attr': {'class': 'form-control', 'placeholder': 'Enter CVV'}}) }}
+            {{ form_errors(form.cvv) }}
+        </div>
+
+        <div class="d-flex justify-content-between">
+            <button type="submit" class="btn btn-primary">Next</button>
+            <a href="{{ path('subscription-address-information') }}" class="btn btn-secondary">Back</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

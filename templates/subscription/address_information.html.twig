@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Address Information{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <h2>Step 2: Address Information</h2>
+    <form method="post">
+        {{ form_start(form) }}
+        
+        <div class="mb-3">
+            {{ form_label(form.addressLine1) }}
+            {{ form_widget(form.addressLine1) }}
+            {{ form_errors(form.addressLine1) }}
+        </div>
+        
+        <div class="mb-3">
+            {{ form_label(form.addressLine2) }}
+            {{ form_widget(form.addressLine2) }}
+            {{ form_errors(form.addressLine2) }}
+        </div>
+
+        <div class="mb-3">
+            {{ form_label(form.city) }}
+            {{ form_widget(form.city) }}
+            {{ form_errors(form.city) }}
+        </div>
+
+        <div class="mb-3">
+            {{ form_label(form.postalCode) }}
+            {{ form_widget(form.postalCode) }}
+            {{ form_errors(form.postalCode) }}
+        </div>
+
+        <div class="mb-3">
+            {{ form_label(form.state) }}
+            {{ form_widget(form.state) }}
+            {{ form_errors(form.state) }}
+        </div>
+
+        <div class="mb-3">
+            {{ form_label(form.country) }}
+            {{ form_widget(form.country) }}
+            {{ form_errors(form.country) }}
+        </div>
+
+        <div class="d-flex justify-content-between">
+            <button type="submit" class="btn btn-primary">Next</button>
+            <a href="{{ path('subscription-user-information') }}" class="btn btn-secondary">Back</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

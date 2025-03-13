@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User Information - Subscription{% endblock %}
+
+{% block body %}
+<div class="card shadow-lg p-4">
+    {% if app.request.query.get('success') == 'true' %}
+        <div class="alert alert-success">
+            Subscribed successfully!
+        </div>
+    {% endif %}
+    <h2 class="mb-4">Step 1: User Information</h2>
+
+    {{ form_start(form, {'attr': {'class': 'needs-validation', 'novalidate': 'novalidate'}}) }}
+
+    <div class="mb-3">
+        {{ form_label(form.name, 'Full Name', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.name, {'attr': {'class': 'form-control', 'placeholder': 'Enter your full name'}}) }}
+        {{ form_errors(form.name) }}
+    </div>
+
+    <div class="mb-3">
+        {{ form_label(form.email, 'Email Address', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder': 'Enter your email'}}) }}
+        {{ form_errors(form.email) }}
+    </div>
+
+    <div class="mb-3">
+        {{ form_label(form.phoneNumber, 'Phone Number', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.phoneNumber, {'attr': {'class': 'form-control', 'placeholder': 'Enter your phone number'}}) }}
+        {{ form_errors(form.phoneNumber) }}
+    </div>
+
+
+    <div class="mb-3">
+        {{ form_label(form.subscriptionType, 'Subscription Type', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.subscriptionType, {'attr': {'class': 'form-select'}}) }}
+        {{ form_errors(form.subscriptionType) }}
+    </div>
+
+    {{ form_end(form) }}
+</div>
+{% endblock %}
