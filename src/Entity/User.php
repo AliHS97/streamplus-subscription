@@ -34,6 +34,10 @@ class User
     #[Assert\Choice(choices: ['Free', 'Premium'], message: 'Choose a valid subscription type')]
     private ?string $subscriptionType = 'Free';
 
+    #[ORM\OneToOne(mappedBy: 'user', targetEntity: Address::class, cascade: ['persist', 'remove'])]
+    private ?Address $address = null;
+
+
     // Getters and Setters
     public function getId(): ?int
     {
@@ -82,5 +86,10 @@ class User
     {
         $this->subscriptionType = $subscriptionType;
         return $this;
+    }
+
+    public function getAddress(): ?Address
+    {
+        return $this->address;
     }
 }
